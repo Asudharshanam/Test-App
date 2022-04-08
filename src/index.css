@@ -21,6 +21,8 @@ code {
 }
 
 .login-form form {
+  width: 500px;
+  height: 400px;
   border: 1px solid grey;
   padding: 50px;
   border-radius: 10px;

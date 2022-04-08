@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
-import { Form, FormGroup, Label, Button, Input, Spinner } from "reactstrap";
+import {
+  Form,
+  FormGroup,
+  Label,
+  Button,
+  Input,
+  Spinner,
+  Alert,
+} from "reactstrap";
 import { userService } from "../api/userService";
 
 export default function LoginForm() {
@@ -13,7 +21,11 @@ export default function LoginForm() {
   });
 
   const onChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+      error: false,
+    });
   };
 
   const onSubmit = (e) => {
@@ -64,6 +76,13 @@ export default function LoginForm() {
         >
           Submit {formData.submitting && <Spinner size="sm" />}
         </Button>
+        <Alert
+          isOpen={formData.error}
+          style={{ marginTop: "20px" }}
+          color="danger"
+        >
+          Username and password did not match.
+        </Alert>
       </Form>
     </div>
   );
